@@ -80,10 +80,16 @@ jobs:
           cache-to: type=gha,mode=max
           platforms: linux/arm64,linux/arm,linux/amd64
 
+      - name: Generate artifact attestation for Docker Hub
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: 'docker.io/${{ secrets.DOCKER_USERNAME }}/proxmox-qdevice' 
+          subject-digest: ${{ steps.build-and-push.outputs.digest }}
+          push-to-registry: true
+
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: 'ghcr.io/${{ github.repository }}'
-          subject-path: '${{ github.workspace }}/proxmox-qdevice'
-          subject-digest: ${{ steps.push.outputs.digest }}
+          subject-digest: ${{ steps.build-and-push.outputs.digest }}
           push-to-registry: true
