@@ -13,7 +13,7 @@ on:
   pull_request:
     branches: [ "master" ]
 
-env:
+# env:
   # github.repository as <account>/<repo>
   # IMAGE_NAME: ${{ github.repository }}
 
