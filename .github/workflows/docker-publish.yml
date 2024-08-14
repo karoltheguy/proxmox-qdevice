@@ -84,5 +84,6 @@ jobs:
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: 'ghcr.io/${{ github.repository }}'
+          subject-path: '${{ github.workspace }}/proxmox-qdevice'
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
