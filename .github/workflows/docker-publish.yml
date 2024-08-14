@@ -83,7 +83,7 @@ jobs:
       - name: Generate artifact attestation for Docker Hub
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: 'docker.io/${{ secrets.DOCKER_USERNAME }}/proxmox-qdevice' 
+          subject-name: 'docker.io/${{ secrets.DOCKER_USER }}/proxmox-qdevice' 
           subject-digest: ${{ steps.build-and-push.outputs.digest }}
           push-to-registry: true
 
